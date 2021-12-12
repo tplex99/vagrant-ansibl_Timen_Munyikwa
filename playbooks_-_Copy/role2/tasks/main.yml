@@ -1,0 +1,26 @@
+---
+# tasks file for role2
+
+- name: install python-pymysql
+  apt: pkg=python-pymysql state=present update_cache=true
+
+- name: install mysql
+  apt: pkg=mysql-server state=present update_cache=true
+
+- name: start mysql 
+  shell: "service mysql start"
+
+#- name: enable mysql
+#  service: name:mysql state=started enabled=true
+- name: enable mysql
+  shell: "systemctl enable mysql"
+
+
+- name: create database
+  mysql_db:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: test_r0802093
+    state: present
+#  mysql_db: db=TM_database state=present
+
+

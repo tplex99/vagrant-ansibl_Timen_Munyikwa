@@ -1,0 +1,8 @@
+---
+ - hosts: webservers
+   user: vagrant
+   become: yes
+   tasks:
+     - name: install nginx
+       action: apt pkg=apache2 state=present
+

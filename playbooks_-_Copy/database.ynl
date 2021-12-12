@@ -1,0 +1,6 @@
+---
+- hosts: database
+  user: vagrant
+  become: yes
+  roles:
+    - role2

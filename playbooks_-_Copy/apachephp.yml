@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  user: vagrant
+  become: yes
+  roles:
+    - role1

@@ -1,0 +1,23 @@
+---
+# tasks file for role1
+ 
+- name: install apache2
+  apt: pkg=apache2 state=present update_cache=true
+
+- name: install php
+  apt: pkg=php state=present update_cache=true
+
+- name: copy file
+  ansible.builtin.copy:
+   #remote_src: /etc/ansible/playbooks/files/timen.php
+   src: /etc/ansible/playbooks/files/timen.php
+   dest: /var/www/html/timen.php
+   #remote_src: yes
+
+- name: start apache
+  shell: "service apache2 start"
+
+- name: enable apache
+  shell: "systemctl enable apache2"
+
+
